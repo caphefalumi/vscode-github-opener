@@ -1,9 +1,8 @@
 {
-  "name": "vscode-open-in-github",
-  "displayName": "Open in GitHub",
+  "name": "vscode-github-opener",
+  "displayName": "Github Opener",
   "description": "Quickly open the GitHub repository in your browser",
-  "icon": "images/icon_200.png",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "publisher": "caphefalumi",
   "license": "SEE LICENSE IN LICENSE.md",
   "galleryBanner": {
@@ -25,21 +24,21 @@
     "vscode": "^1.30.0"
   },
   "activationEvents": [
-    "onCommand:extension.openInGitHub"
+    "onCommand:extension.githubOpener"
   ],
-  "main": "./src/extension",
+  "main": "./out/extension",
   "contributes": {
     "commands": [
       {
-        "command": "extension.openInGitHub",
+        "command": "extension.githubOpener",
         "title": "Open in GitHub"
       }
     ],
     "configuration": {
       "type": "object",
-      "title": "Open in GitHub extension configuration",
+      "title": "GitHub Opener extension configuration",
       "properties": {
-        "openInGitHub.gitHubDomain": {
+        "githubOpener.gitHubDomain": {
           "type": "string",
           "default": "github.com",
           "description": "Configure a custom GitHub domain. Useful for GitHub Enterprise"
@@ -48,7 +47,7 @@
     },
     "keybindings": [
       {
-        "command": "extension.openInGitHub",
+        "command": "extension.githubOpener",
         "key": "ctrl+alt+g",
         "mac": "cmd+alt+g"
       }
@@ -56,16 +55,22 @@
     "menus": {
       "explorer/context": [
         {
-          "command": "extension.openInGitHub"
+          "command": "extension.githubOpener"
         }
       ]
     }
   },
   "scripts": {
+    "vscode:prepublish": "bun run esbuild-base --minify",
+    "esbuild-base": "esbuild ./src/extension.js --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild": "bun run esbuild-base --sourcemap",
+    "esbuild-watch": "bun run esbuild-base --sourcemap --watch",
     "package": "bun x vsce package",
     "publish": "bun x vsce publish"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "esbuild": "^0.19.0"
+  },
   "dependencies": {
     "find-parent-dir": "^0.3.0",
     "git-url-parse": "^11.1.1",

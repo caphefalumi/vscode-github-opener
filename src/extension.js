@@ -7,7 +7,7 @@ const findParentDir = require('find-parent-dir');
 const ini = require('ini');
 const gitProvider = require('./gitProvider');
 
-function openInGitHub() {
+function githubOpener() {
     // Get workspace folder path
     const workspacePath = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
 
@@ -60,7 +60,7 @@ function openInGitHub() {
 }
 
 function activate(context) {
-    const disposable = vscode.commands.registerCommand('extension.openInGitHub', openInGitHub);
+    const disposable = vscode.commands.registerCommand('extension.githubOpener', githubOpener);
     context.subscriptions.push(disposable);
 }
 
