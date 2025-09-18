@@ -2,7 +2,7 @@
   "name": "vscode-github-opener",
   "displayName": "Github Opener",
   "description": "Quickly open the GitHub repository in your browser",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "publisher": "caphefalumi",
   "license": "SEE LICENSE IN LICENSE.md",
   "galleryBanner": {

@@ -14,6 +14,7 @@ You can install this extension from the VS Code Marketplace:
 4. Click Install
 
 Or install from command line:
+
 ```bash
 code --install-extension caphefalumi.vscode-github-opener
 ```
